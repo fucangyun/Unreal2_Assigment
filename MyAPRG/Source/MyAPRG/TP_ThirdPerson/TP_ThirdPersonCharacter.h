@@ -41,4 +41,15 @@ public:
 
 	void MoveForward(float forward_value);
 	void MoveRight(float right_value);
+
+protected:
+	UFUNCTION(BlueprintImplementableEvent, Category = "Character")
+		void OnDamaged(float Damage, const FHitResult& HitInfo, class ATP_ThirdPersonCharacter* InstigatedCharacter, AActor* DamageCauser);
+
+public:
+	UFUNCTION(BlueprintCallable, Category = "Character")
+		virtual void HandleDamage(float Damage, const FHitResult& HitInfo, class ATP_ThirdPersonCharacter* InstigatedCharacter, AActor* DamageCauser)
+	{
+		OnDamaged(Damage, HitInfo, InstigatedCharacter, DamageCauser);
+	}
 };
